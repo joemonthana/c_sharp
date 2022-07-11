@@ -1,6 +1,6 @@
-﻿
-using System;
-namespace Tarea1_Inventario
+﻿using System;
+
+namespace inventario
 {
     class Program
     {
@@ -48,7 +48,7 @@ namespace Tarea1_Inventario
             Console.Clear();
             Console.WriteLine();
 
-            Console.WriteLine("Ingreso de Productos al Inventario");
+            Console.WriteLine("Salida de Productos de Inventario");
             Console.WriteLine("**********************************");
             Console.Write("Ingrese el codigo del producto: ");
             codigo = Console.ReadLine();
@@ -56,6 +56,22 @@ namespace Tarea1_Inventario
             cantidad = Console.ReadLine();
 
             movimientoInventario(codigo, Int32.Parse(cantidad), "+");
+        }
+        static void salidaDeInventario() {
+            string codigo = "";
+            string cantidad = "";
+
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.WriteLine("Ingreso de Productos al Inventario");
+            Console.WriteLine("**********************************");
+            Console.Write("Ingrese el codigo del producto: ");
+            codigo = Console.ReadLine();
+            Console.Write("Ingrese la cantidad del producto: ");
+            cantidad = Console.ReadLine();
+
+            movimientoInventario(codigo, Int32.Parse(cantidad), "-");
         }
 
         
@@ -82,6 +98,9 @@ namespace Tarea1_Inventario
                         break;
                     case "2":
                         ingresoDeInventario();
+                        break;
+                    case "3":
+                        salidaDeInventario();
                         break;
                     default:
                     break;
