@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace inventario
 {
@@ -6,11 +7,11 @@ namespace inventario
     {
         static string[,] productos = new string[5,3]
         {
-            { "001", "iPhoneX", "0"},
-            { "002", "Laptop Dell", "5"},
-            { "003", "Monitor Samsung", "2"},
-            { "004", "Mouse", "100"},
-            { "005", "Headset", "25"},
+            { "001", "iPhoneX", "0" },
+            { "002", "Laptop Dell", "5" },
+            { "003", "Monitor Samsung", "2" },
+            { "004", "Mouse", "100" },
+            { "005", "Headset", "25" },
         };
 
         static void listarProductos() {
@@ -57,6 +58,7 @@ namespace inventario
 
             movimientoInventario(codigo, Int32.Parse(cantidad), "+");
         }
+
         static void salidaDeInventario() {
             string codigo = "";
             string cantidad = "";
@@ -64,7 +66,7 @@ namespace inventario
             Console.Clear();
             Console.WriteLine();
 
-            Console.WriteLine("Salida de Productos del Inventario");
+            Console.WriteLine("Salida de Productos de Inventario");
             Console.WriteLine("**********************************");
             Console.Write("Ingrese el codigo del producto: ");
             codigo = Console.ReadLine();
