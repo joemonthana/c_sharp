@@ -5,13 +5,13 @@ namespace inventario
 {
     class Program
     {
-        static string[,] productos = new string[5,3]
+        static string[,] productos = new string[5,4]
         {
-            { "001", "iPhoneX", "0" },
-            { "002", "Laptop Dell", "5" },
-            { "003", "Monitor Samsung", "2" },
-            { "004", "Mouse", "100" },
-            { "005", "Headset", "25" },
+            { "001", "iPhoneX", "0", "33000" },
+            { "002", "Laptop Dell", "5", "25000" },
+            { "003", "Monitor Samsung", "2", "5500" },
+            { "004", "Mouse", "100", "150" },
+            { "005", "Headset", "25", "1200" },
         };
 
         static void listarProductos() {
@@ -19,11 +19,11 @@ namespace inventario
             Console.WriteLine("");
             Console.WriteLine("Listado de Productos");
             Console.WriteLine("********************");
-            Console.WriteLine("Codigo, Descripcion y Existencia");
+            Console.WriteLine("Codigo, Descripcion Existencia y Precio");
 
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine(productos[i, 0] + " | " + productos[i, 1] + " | " + productos[i, 2]);
+                Console.WriteLine(productos[i, 0] + " | " + productos[i, 1] + " | " + productos[i, 2] + " | " + productos[i, 3]);
             }
 
             Console.ReadLine();
@@ -37,6 +37,18 @@ namespace inventario
                         productos[i, 2] = (Int32.Parse(productos[i, 2]) + cantidad).ToString();
                     } else {
                         productos[i, 2] = (Int32.Parse(productos[i, 2]) - cantidad).ToString();
+                    }
+                }
+            }
+        }
+        static void cambioDePrecio(string codigo, int ajustePrecio, string movimientoPrecio) {
+            for (int i = 0; i < 5; i++)
+            {
+                if (productos[i, 0] == codigo) {
+                    if (movimientoPrecio == "+") {
+                        productos[i, 3] = (Int32.Parse(productos[i, 3]) + ajustePrecio).ToString();
+                    } else {
+                        productos[i, 3] = (Int32.Parse(productos[i, 3]) - ajustePrecio).ToString();
                     }
                 }
             }
@@ -75,6 +87,38 @@ namespace inventario
 
             movimientoInventario(codigo, Int32.Parse(cantidad), "-");
         }
+        static void aumentodeprecio() {
+            string codigo = "";
+            string aumentodeprecio = "";
+
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.WriteLine("Aumento de precio de Productos");
+            Console.WriteLine("**********************************");
+            Console.Write("Ingrese el codigo del producto: ");
+            codigo = Console.ReadLine();
+            Console.Write("Ingrese el aumento de precio del producto: ");
+            aumentodeprecio = Console.ReadLine();
+
+            cambioDePrecio(codigo, Int32.Parse(aumentodeprecio), "+");
+        }
+        static void rebajadeprecio() {
+            string codigo = "";
+            string rebajadeprecio = "";
+
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.WriteLine("Rebaja de precio de Productos");
+            Console.WriteLine("**********************************");
+            Console.Write("Ingrese el codigo del producto: ");
+            codigo = Console.ReadLine();
+            Console.Write("Ingrese la rebaja de precio del producto: ");
+            rebajadeprecio = Console.ReadLine();
+
+            cambioDePrecio(codigo, Int32.Parse(rebajadeprecio), "-");
+        }
 
         
         static void Main(string[] args)
@@ -90,6 +134,8 @@ namespace inventario
                 Console.WriteLine("1 - Productos");
                 Console.WriteLine("2 - Ingreso de Inventario");
                 Console.WriteLine("3 - Salida de Inventario");
+                Console.WriteLine("4 - Aumento de Precio");
+                Console.WriteLine("5 - Rebaja de Precio");
                 Console.WriteLine("0 - Salir");
                 opcion = Console.ReadLine();
 
@@ -103,6 +149,12 @@ namespace inventario
                         break;
                     case "3":
                         salidaDeInventario();
+                        break;
+                    case "4":
+                        aumentodeprecio();
+                        break;
+                    case "5":
+                        rebajadeprecio();
                         break;
                     default:
                     break;
