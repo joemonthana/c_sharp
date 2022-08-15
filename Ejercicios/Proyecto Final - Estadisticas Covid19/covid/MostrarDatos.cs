@@ -13,6 +13,8 @@ public class MostrarDatos
     {
         Departamentos d1 = new Departamentos("Cortes", 0);
         ListadeDepartamentos.Add(d1);
+        Departamentos d2 = new Departamentos("Francisco Morazan", 0);
+        ListadeDepartamentos.Add(d2);
     }
 
     public void ListarDepartamentos()
@@ -25,10 +27,13 @@ public class MostrarDatos
         Console.WriteLine("======================");
         Console.WriteLine("");
 
-        foreach (var Departamentos in ListadeDepartamentos)
+        foreach (var departamentos in ListadeDepartamentos)
         {
-            Console.WriteLine(Departamentos.Departamento + " | " + Departamentos.CasosPositivos);
+            Console.WriteLine(departamentos.Departamento + " | " + departamentos.CasosPositivos);
         }
+        Console.WriteLine();
+        Console.ReadLine();
 
     }
+    
 }
